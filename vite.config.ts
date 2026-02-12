@@ -11,5 +11,15 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-telegram': ['@twa-dev/sdk'],
+          'vendor-state': ['zustand'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 500,
   },
 })
